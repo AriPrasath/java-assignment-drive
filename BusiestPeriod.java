@@ -1,4 +1,4 @@
-package javaclassassignment;
+package ari;
 
 import java.util.*;
 
@@ -35,30 +35,33 @@ public class BusiestPeriod {
 			t2=Integer.parseInt(temp[1]);
 			t3=temp[2];
 			ar.add(new Hotel(t1,t2,t3));
-			System.out.println(ar);
 		}
-		int t1=0,t2;
+		int t1=0,t3=0;
+		Hotel t2;
 		String s1="enter";
 		ListIterator<Hotel> h=ar.listIterator();
 		while(h.hasNext()){
 			
 			Hotel temp=(Hotel) h.next();
 			
-			if(min>max) {
-				max=min;
-				t1=temp.time;
-				t2=temp.nop;
-			}
-			
-			if(temp.type==s1) {
+			if(temp.type.equals(s1)) {
 				min+=temp.nop;
-				System.out.println(min);
 			}else {
 				
 				min-=temp.nop;
 			}
+			if(min>max) {
+				max=min;
+				t1=temp.time;
+					
+				t2=h.next();
+				t3=t2.time;
+
+				t2=h.previous();
+				
+			}
 		}
-		System.out.println(t1);
+		System.out.println(t1+ "  " +t3);
 	}
 
 }
